@@ -171,7 +171,7 @@ export default function Footer() {
           }}
           className="footer-bottom"
         >
-          <span>© {new Date().getFullYear()} Rupam Kumar. All rights reserved.</span>
+          <span>© 2026 Rupam Kumar. All rights reserved.</span>
           <span>Designed & Engineered with Next.js & TypeScript</span>
         </div>
       </div>

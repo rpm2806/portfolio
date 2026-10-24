@@ -12,10 +12,10 @@ I enjoy understanding problems thoroughly before choosing tools, writing maintai
   linkedin: "https://linkedin.com/in/rupam-kumar-86a999254",
   github: "https://github.com/rpm2806",
   location: "India",
-  resumeUrl: "/resume.pdf", // Replace with real resume when available
-  resumeAvailable: false, // Set to true when resume.pdf is placed in /public
-  whatsappNumber: "", // Configure with your number e.g. "919876543210"
-  whatsappConfigured: false,
+  resumeUrl: "/resumes/Rupam_Kumar_Resume.pdf",
+  resumeAvailable: true,
+  whatsappNumber: "916206449375", // India country code + number
+  whatsappConfigured: true,
   avatarUrl: "/images/headshot.jpg", // Replace with real headshot
   avatarAvailable: false, // Set to true when headshot is placed in /public/images/
   buildingThemes: [

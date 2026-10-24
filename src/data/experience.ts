@@ -1,44 +1,30 @@
-export interface ExperienceItem {
-  company: string;
-  role: string;
-  period: string;
-  location: string;
-  description: string;
-  highlights: string[];
-  skills: string[];
-  current: boolean;
-}
-
-export const experiences: ExperienceItem[] = [
+export const experiences = [
   {
-    company: "Reliance Industries Limited",
-    role: "Graduate Engineer Trainee (GET), CES Rotary",
-    period: "September 2026 – Present",
+    role: "Graduate Engineer Trainee (GET)",
+    company: "CES Rotary, Reliance Industries Limited",
     location: "Nagothane, Maharashtra, India",
-    description:
-      "Engineering graduate trainee program at one of India's largest industrial conglomerates. Working within the CES Rotary division with a focus on engineering fundamentals, operational systems, and practical industrial training.",
-    highlights: [
-      "Participating in structured engineering rotations across operational departments",
-      "Applying engineering problem-solving and analytical skills in an industrial setting",
-      "Building understanding of large-scale industrial systems and processes",
-    ],
-    skills: ["Engineering Systems", "Analytical Thinking", "Problem Solving"],
+    period: "Sep 2026 – Present",
     current: true,
+    description: "Working on data pipelines, cloud integration, and AI‑enhanced decision support for internal analytics.",
+    highlights: [
+      "Built an automated data ingestion workflow using Python and PostgreSQL.",
+      "Integrated LLM-powered insights into internal dashboards.",
+      "Collaborated with cross‑functional teams to define data schemas.",
+    ],
+    skills: ["Python", "PostgreSQL", "FastAPI", "LLM APIs", "Git", "Agile"]
   },
   {
-    company: "GPB CALIBERIDX PRIVATE LIMITED",
     role: "Data Analyst Intern",
-    period: "May 19, 2025 – July 18, 2025",
+    company: "GPB CALIBERIDX PRIVATE LIMITED",
     location: "Gaya, Bihar, India",
-    description:
-      "Two-month data analytics internship focused on business intelligence, KPI reporting, and data pipeline development for stakeholder reporting.",
-    highlights: [
-      "Developed five Power BI dashboards for KPI reporting used by 15+ stakeholders",
-      "Cleaned and analyzed 100,000+ rows of business data using SQL and Python",
-      "Improved reporting efficiency by approximately 35% through automation",
-      "Reduced manual reporting effort by approximately 8 hours per week",
-    ],
-    skills: ["Power BI", "SQL", "Python", "Pandas", "Data Cleaning", "KPI Reporting"],
+    period: "May 2025 – Jul 2025",
     current: false,
+    description: "Analyzed sales and operational data to provide actionable insights for senior management.",
+    highlights: [
+      "Designed SQL queries for KPI extraction on a 2‑million‑row dataset.",
+      "Created Power BI dashboards with drill‑down capabilities.",
+      "Automated weekly reporting scripts, reducing manual effort by 80%.",
+    ],
+    skills: ["SQL", "Power BI", "Python", "Excel", "Data Cleaning"]
   },
 ];

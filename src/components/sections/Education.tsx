@@ -28,7 +28,7 @@ export default function Education() {
           {education.map((ed, idx) => (
             <div
               key={idx}
-              className="card"
+              className="card ed-card"
               style={{
                 padding: "24px 28px",
                 position: "relative",
@@ -74,12 +74,12 @@ export default function Education() {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "flex-start",
-                  gap: "16px",
+                  gap: "14px",
                   flexWrap: "wrap",
                 }}
               >
                 {/* Left info */}
-                <div style={{ flex: "1 1 320px" }}>
+                <div style={{ flex: "1 1 280px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
                     <span
                       style={{
@@ -96,12 +96,12 @@ export default function Education() {
                     >
                       <GraduationCap size={16} />
                     </span>
-                    <h3 style={{ fontSize: "17px", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.01em" }}>
+                    <h3 style={{ fontSize: "16.5px", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.01em" }}>
                       {ed.degree}
                     </h3>
                   </div>
 
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", paddingLeft: "36px" }}>
+                  <div className="ed-subline" style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap", paddingLeft: "36px" }}>
                     <span style={{ fontSize: "14px", fontWeight: 600, color: "var(--accent-cyan)" }}>
                       {ed.institution}
                     </span>
@@ -121,7 +121,7 @@ export default function Education() {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "6px",
-                      padding: "6px 14px",
+                      padding: "5px 12px",
                       borderRadius: "10px",
                       background: "rgba(6, 182, 212, 0.1)",
                       border: "1px solid rgba(6, 182, 212, 0.25)",
@@ -141,7 +141,7 @@ export default function Education() {
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "6px",
-                      padding: "6px 14px",
+                      padding: "5px 12px",
                       borderRadius: "10px",
                       background: "rgba(139, 92, 246, 0.1)",
                       border: "1px solid rgba(139, 92, 246, 0.25)",
@@ -158,6 +158,7 @@ export default function Education() {
 
               {/* Description */}
               <p
+                className="ed-desc"
                 style={{
                   fontSize: "13.5px",
                   color: "var(--text-secondary)",
@@ -172,6 +173,7 @@ export default function Education() {
               {/* Highlights pills */}
               {ed.highlights && ed.highlights.length > 0 && (
                 <div
+                  className="ed-pills"
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
@@ -203,6 +205,17 @@ export default function Education() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .ed-card {
+            padding: 20px 16px !important;
+          }
+          .ed-subline, .ed-desc, .ed-pills {
+            padding-left: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

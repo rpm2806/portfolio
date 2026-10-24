@@ -120,6 +120,7 @@ function ResumeCard({ variant }: { variant: ResumeVariant }) {
     >
       <div
         ref={cardRef}
+        className="resume-variant-card"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
@@ -293,7 +294,7 @@ export default function Resumes() {
       id="resumes"
       className="section"
       style={{
-        background: "linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)",
+        background: "transparent",
         position: "relative",
         overflow: "hidden",
       }}
@@ -331,6 +332,7 @@ export default function Resumes() {
         <div style={{ perspective: "1200px", marginBottom: "48px" }}>
           <div
             ref={overallRef}
+            className="resume-overall-card"
             onMouseMove={handleOverallMove}
             onMouseEnter={() => setOverallHovered(true)}
             onMouseLeave={() => { setOverallHovered(false); setOverallRot({ x: 0, y: 0 }); }}
@@ -360,7 +362,7 @@ export default function Resumes() {
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(34,211,238,0.06) 0%, rgba(129,140,248,0.06) 100%)", pointerEvents: "none" }} />
             <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "280px", height: "280px", borderRadius: "50%", background: "rgba(34,211,238,0.1)", filter: "blur(60px)", opacity: overallHovered ? 1 : 0.4, transition: "opacity 0.4s", pointerEvents: "none" }} />
 
-            <div style={{ display: "flex", alignItems: "center", gap: "24px", position: "relative", transform: "translateZ(20px)" }}>
+            <div className="resume-overall-info" style={{ display: "flex", alignItems: "center", gap: "24px", position: "relative", transform: "translateZ(20px)" }}>
               <div
                 style={{
                   width: "68px",
@@ -391,6 +393,7 @@ export default function Resumes() {
 
             <button
               onClick={handleOverallDownload}
+              className="resume-overall-btn"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -478,6 +481,30 @@ export default function Resumes() {
         }
         @media (max-width: 1100px) {
           .resume-3d-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 680px) {
+          .resume-overall-card {
+            padding: 24px 18px !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 20px !important;
+          }
+          .resume-overall-info {
+            gap: 16px !important;
+          }
+          .resume-overall-btn {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 14px 20px !important;
+            font-size: 14px !important;
+          }
+          .resume-variant-card {
+            padding: 22px 18px !important;
+          }
+          .resume-3d-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
         }
         @media (max-width: 580px) {
           .resume-3d-grid { grid-template-columns: 1fr; }

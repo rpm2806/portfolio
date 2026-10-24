@@ -23,10 +23,11 @@ export default function Experience() {
         </p>
 
         {/* Timeline */}
-        <div style={{ position: "relative", paddingLeft: "56px" }}>
+        <div className="experience-timeline" style={{ position: "relative", paddingLeft: "56px" }}>
           {/* Vertical line */}
           <div
             aria-hidden
+            className="experience-line"
             style={{
               position: "absolute",
               left: "19px",
@@ -47,6 +48,7 @@ export default function Experience() {
               {/* Timeline dot */}
               <div
                 aria-hidden
+                className="experience-dot"
                 style={{
                   position: "absolute",
                   left: "-46px",
@@ -63,7 +65,7 @@ export default function Experience() {
               />
 
               {/* Card */}
-              <div className="card" style={{ padding: "28px 32px" }}>
+              <div className="card experience-card" style={{ padding: "28px 32px" }}>
                 {/* Header */}
                 <div
                   style={{
@@ -98,7 +100,7 @@ export default function Experience() {
                       </span>
                     </div>
                   </div>
-                  <div style={{ textAlign: "right", flexShrink: 0 }}>
+                  <div className="experience-meta" style={{ textAlign: "right", flexShrink: 0 }}>
                     <div
                       style={{
                         display: "flex",
@@ -178,6 +180,34 @@ export default function Experience() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .experience-timeline {
+            padding-left: 28px !important;
+          }
+          .experience-line {
+            left: 8px !important;
+          }
+          .experience-dot {
+            left: -27px !important;
+            width: 14px !important;
+            height: 14px !important;
+            top: 22px !important;
+          }
+          .experience-card {
+            padding: 20px 16px !important;
+          }
+          .experience-meta {
+            text-align: left !important;
+            width: 100% !important;
+            margin-top: 4px !important;
+          }
+          .experience-meta > div {
+            justify-content: flex-start !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

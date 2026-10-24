@@ -6,6 +6,7 @@ import Education from "@/components/sections/Education";
 import Leadership from "@/components/sections/Leadership";
 import Resumes from "@/components/sections/Resumes";
 import Contact from "@/components/sections/Contact";
+import Footer from "@/components/navigation/Footer";
 
 export default function HomePage() {
   return (
@@ -19,13 +20,14 @@ export default function HomePage() {
       <Leadership />
       <Resumes />
       <Contact />
+      <Footer />
     </>
   );
 }
 
 function About() {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section" style={{ backgroundColor: "transparent" }}>
       <div className="container">
         <div className="section-label" aria-hidden>About</div>
         <h2

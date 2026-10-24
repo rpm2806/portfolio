@@ -541,7 +541,7 @@ export default function Hero() {
       }} />
 
       {/* Aqua water-world planet — top right */}
-      <div aria-hidden style={{
+      <div aria-hidden className="hero-decor-planet" style={{
         position: "absolute", top: "8%", right: "5%",
         width: "180px", height: "180px", borderRadius: "50%",
         background: "radial-gradient(circle at 38% 35%, #134e6f 0%, #0c2b48 50%, #081a34 100%)",
@@ -635,10 +635,10 @@ export default function Hero() {
 
             {/* Name */}
             <h1 style={{
-              fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
+              fontSize: "clamp(2.4rem, 7.5vw, 5.5rem)",
               fontWeight: 900,
               letterSpacing: "-0.04em",
-              lineHeight: 1.0,
+              lineHeight: 1.05,
               marginBottom: "16px",
               color: "#f8fafc",
               textShadow: "0 0 60px rgba(34,211,238,0.15)",
@@ -660,17 +660,26 @@ export default function Hero() {
             </h2>
 
             {/* Description */}
-            <p style={{
-              fontSize: "1rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.8,
-              maxWidth: "540px", marginBottom: "40px",
-              animation: "fadeInUp 0.6s 0.3s ease both",
-            }}>
+            <p
+              className="hero-desc"
+              style={{
+                fontSize: "1rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.8,
+                maxWidth: "540px", marginBottom: "36px",
+                animation: "fadeInUp 0.6s 0.3s ease both",
+              }}
+            >
               {profile.tagline} With a mechanical engineering foundation from NIT Durgapur and hands-on experience in
               Python, SQL, full-stack development, machine learning, and LLM-based applications.
             </p>
 
             {/* CTAs */}
-            <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginBottom: "40px", animation: "fadeInUp 0.6s 0.4s ease both" }}>
+            <div
+              className="hero-actions"
+              style={{
+                display: "flex", gap: "14px", flexWrap: "wrap",
+                marginBottom: "36px", animation: "fadeInUp 0.6s 0.4s ease both"
+              }}
+            >
               <a
                 href="#projects"
                 onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}
@@ -696,21 +705,21 @@ export default function Hero() {
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "8px",
                   padding: "14px 28px", borderRadius: "14px",
-                  border: "1.5px solid rgba(255,255,255,0.15)",
-                  background: "rgba(255,255,255,0.05)",
+                  border: "1.5px solid rgba(255,255,255,0.18)",
+                  background: "rgba(255,255,255,0.06)",
                   backdropFilter: "blur(8px)",
-                  color: "rgba(255,255,255,0.85)", fontWeight: 600, fontSize: "15px",
+                  color: "rgba(255,255,255,0.9)", fontWeight: 600, fontSize: "15px",
                   cursor: "pointer", textDecoration: "none", fontFamily: "inherit",
                   transition: "all 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.1)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.12)";
                   e.currentTarget.style.borderColor = "rgba(34,211,238,0.5)";
                   e.currentTarget.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                  e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
                   e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
@@ -719,7 +728,13 @@ export default function Hero() {
             </div>
 
             {/* Social links */}
-            <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap", animation: "fadeInUp 0.6s 0.5s ease both" }}>
+            <div
+              className="hero-socials"
+              style={{
+                display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap",
+                animation: "fadeInUp 0.6s 0.5s ease both"
+              }}
+            >
               {[
                 { href: profile.github, icon: <GithubIcon size={16} />, label: "GitHub" },
                 { href: profile.linkedin, icon: <LinkedinIcon size={16} />, label: "LinkedIn" },
@@ -839,15 +854,48 @@ export default function Hero() {
         @media (max-width: 900px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 48px !important;
+            gap: 36px !important;
             text-align: center;
           }
           .hero-sphere-wrap {
             order: -1;
             width: 100%;
           }
+          .hero-decor-planet {
+            display: none !important;
+          }
+          .hero-desc {
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+          .hero-actions, .hero-socials {
+            justify-content: center !important;
+          }
           .building-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-sphere-wrap {
+            transform: scale(0.85);
+            margin: -20px auto 10px;
+          }
+          .hero-actions {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 12px !important;
+          }
+          .hero-actions a {
+            justify-content: center !important;
+            min-height: 48px !important;
+            padding: 13px 20px !important;
+            font-size: 14px !important;
+          }
+        }
+        @media (max-width: 420px) {
+          .hero-sphere-wrap {
+            transform: scale(0.72);
+            margin: -35px auto 0px;
           }
         }
         @media (min-width: 640px) and (max-width: 900px) {

@@ -165,7 +165,7 @@ export default function Contact() {
           </div>
 
           {/* Right: Contact form */}
-          <div className="card" style={{ padding: "32px" }}>
+          <div className="card contact-form-card" style={{ padding: "32px" }}>
             <h3 style={{ fontSize: "16px", fontWeight: 700, color: "var(--text-primary)", marginBottom: "6px" }}>
               Send a Message
             </h3>
@@ -324,7 +324,7 @@ export default function Contact() {
                   type="submit"
                   className="btn-primary"
                   disabled={status === "sending"}
-                  style={{ width: "100%", justifyContent: "center", opacity: status === "sending" ? 0.7 : 1 }}
+                  style={{ width: "100%", justifyContent: "center", minHeight: "48px", opacity: status === "sending" ? 0.7 : 1 }}
                   aria-busy={status === "sending"}
                 >
                   {status === "sending" ? (
@@ -367,6 +367,12 @@ export default function Contact() {
         @media (max-width: 768px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
+            gap: 28px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .contact-form-card {
+            padding: 22px 18px !important;
           }
         }
       `}</style>

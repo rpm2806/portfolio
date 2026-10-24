@@ -40,7 +40,7 @@ export default function Projects() {
       : projects.filter((p) => p.categories.includes(activeFilter));
 
   return (
-    <section id="projects" className="section" style={{ backgroundColor: "var(--bg-secondary)" }}>
+    <section id="projects" className="section" style={{ backgroundColor: "transparent" }}>
       <div className="container">
         <div className="section-label" aria-hidden>Projects</div>
         <div
@@ -138,7 +138,7 @@ export default function Projects() {
             {filtered.map((project) => (
               <article
                 key={project.id}
-                className="card"
+                className="card project-card"
                 style={{ padding: "28px", display: "flex", flexDirection: "column" }}
               >
                 {/* Header */}
@@ -278,6 +278,12 @@ export default function Projects() {
         @media (max-width: 768px) {
           .projects-grid {
             grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .project-card {
+            padding: 20px 16px !important;
           }
         }
       `}</style>

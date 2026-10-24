@@ -361,7 +361,7 @@ export default function Navbar() {
                 {link.label}
               </button>
             ))}
-            <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
+            <div className="mobile-menu-actions" style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
               {profile.resumeAvailable ? (
                 <a
                   href={profile.resumeUrl}
@@ -394,6 +394,11 @@ export default function Navbar() {
         @media (max-width: 899px) {
           .desktop-nav { display: none !important; }
           .mobile-nav-controls { display: flex !important; }
+        }
+        @media (max-width: 440px) {
+          .mobile-menu-actions {
+            flex-direction: column !important;
+          }
         }
       `}</style>
     </nav>

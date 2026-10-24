@@ -54,8 +54,9 @@ export default function Contact() {
             name,
             email,
             message,
+            reply_to: email,
+            from_name: name,
             subject: `Portfolio Contact from ${name}`,
-            from_name: "Portfolio Visitor",
             botcheck: (data.get("botcheck") as string) || "",
           }),
         });

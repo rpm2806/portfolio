@@ -16,7 +16,7 @@ I enjoy understanding problems thoroughly before choosing tools, writing maintai
   resumeAvailable: true,
   whatsappNumber: "916206449375", // India country code + number
   whatsappConfigured: true,
-  web3formsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "",
+  web3formsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "1604db40-a80b-46a7-a01c-1420a93303e3",
   avatarUrl: "/images/headshot.jpg", // Replace with real headshot
   avatarAvailable: false, // Set to true when headshot is placed in /public/images/
   buildingThemes: [

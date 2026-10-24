@@ -9,6 +9,7 @@ type FormStatus = "idle" | "sending" | "success" | "error";
 
 export default function Contact() {
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [serverMessage, setServerMessage] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -31,18 +32,56 @@ export default function Contact() {
     if (Object.keys(errs).length > 0) return;
 
     setStatus("sending");
+    setServerMessage("");
 
-    // Mailto fallback — opens email client with pre-filled message
     const name = (data.get("name") as string).trim();
     const email = (data.get("email") as string).trim();
     const message = (data.get("message") as string).trim();
+    const accessKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      profile.web3formsAccessKey;
+
+    if (accessKey) {
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name,
+            email,
+            message,
+            subject: `Portfolio Contact from ${name}`,
+            from_name: "Portfolio Visitor",
+            botcheck: (data.get("botcheck") as string) || "",
+          }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          setStatus("success");
+          setServerMessage("Message delivered directly to my inbox! Thank you for reaching out.");
+          formRef.current?.reset();
+          return;
+        } else {
+          console.warn("Web3Forms response warning, falling back to email client:", result.message);
+        }
+      } catch (err) {
+        console.warn("Web3Forms network error, falling back to email client:", err);
+      }
+    }
+
+    // Graceful fallback to mail client
     const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
     const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
 
-    // Show success after brief delay
     setTimeout(() => {
       setStatus("success");
+      setServerMessage("Message pre-filled in your email client. Send it to deliver directly!");
       formRef.current?.reset();
     }, 500);
   };
@@ -170,7 +209,7 @@ export default function Contact() {
               Send a Message
             </h3>
             <p style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "24px" }}>
-              This will open your email client with a pre-filled message.
+              Send a message directly to my inbox, or connect via any of the links on the left.
             </p>
 
             {status === "success" ? (
@@ -187,10 +226,10 @@ export default function Contact() {
               >
                 <CheckCircle size={48} style={{ color: "#10b981" }} />
                 <h4 style={{ fontSize: "16px", fontWeight: 700, color: "var(--text-primary)" }}>
-                  Email client opened!
+                  Message Delivered!
                 </h4>
                 <p style={{ fontSize: "14px", color: "var(--text-secondary)" }}>
-                  Your message has been pre-filled. Send it from your email client.
+                  {serverMessage || "Thank you for reaching out. I'll get back to you shortly."}
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -202,6 +241,8 @@ export default function Contact() {
               </div>
             ) : (
               <form ref={formRef} onSubmit={handleSubmit} noValidate>
+                {/* Honeypot for spam bot prevention */}
+                <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 {/* Name */}
                 <div style={{ marginBottom: "16px" }}>
                   <label
@@ -328,7 +369,7 @@ export default function Contact() {
                   aria-busy={status === "sending"}
                 >
                   {status === "sending" ? (
-                    "Opening email client..."
+                    "Sending message..."
                   ) : (
                     <>
                       <Send size={16} />
